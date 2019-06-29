@@ -1,6 +1,6 @@
 ![N|Solid](flutter.png)![N|Solid](plus.png)![N|Solid](kotlin.png)
 
-![N|Solid](sample.gif)
+![N|Solid](sample.gif){:height="700px" width="400px"}
 # Flutter + Kotlin (Flutlin)
 ### Aim
 To find out the way to utilize flutter UI design benefits while on logical tasks like rest api calling  with Kotlin.
