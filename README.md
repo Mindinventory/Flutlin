@@ -1,5 +1,6 @@
 ![N|Solid](flutter.png)![N|Solid](plus.png)![N|Solid](kotlin.png)
 
+![N|Solid](sample.gif)
 # Flutter + Kotlin (Flutlin)
 ### Aim
 To find out the way to utilize flutter UI design benefits while on logical tasks like rest api calling  with Kotlin.
@@ -10,7 +11,6 @@ To find out the way to utilize flutter UI design benefits while on logical tasks
 * FlutterView (https://docs.flutter.io/javadoc/io/flutter/view/FlutterView.html)
 * FlutterActivity (https://docs.flutter.io/javadoc/io/flutter/app/FlutterActivity.html)
 
->
 ### Steps to follow to use Flutter View
 1) Create Flutter Project.
 2) Open android project in Android Studio.

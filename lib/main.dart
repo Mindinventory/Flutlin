@@ -61,14 +61,7 @@ class _MyUsersState extends State<MyUsers> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
-        children: <Widget>[
-          Container(
-            color: Colors.grey[100],
-          ),
-          _getScreenBody(context)
-        ],
-      ),
+      body: _getScreenBody(context),
     );
   }
 
@@ -93,7 +86,6 @@ class _MyUsersState extends State<MyUsers> {
           width: double.infinity,
           height: 190.0,
           decoration: BoxDecoration(
-            /*shape: BoxShape.circle,*/
               border: Border.all(color: Colors.grey[350], width: 1.0),
               image: DecorationImage(
                   fit: BoxFit.cover, image: NetworkImage(images[index])))),

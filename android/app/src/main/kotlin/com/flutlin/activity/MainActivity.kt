@@ -72,6 +72,8 @@ class MainActivity : AppCompatActivity() {
     // establishing message channel which can be used for the data passing from one platform to another.
     messageChannel = BasicMessageChannel(flutterView, CHANNEL, StringCodec.INSTANCE)
 
+    sendAndroidIncrement("")
+
     // calling rest api of random user.
     callRandomUserApi()
   }
