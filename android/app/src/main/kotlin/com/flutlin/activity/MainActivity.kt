@@ -4,12 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
-import android.support.v7.app.AppCompatActivity
+import android.os.Looper
 import android.util.Log.d
-import com.flutlin.apiConfig.WebApiClient
+import androidx.appcompat.app.AppCompatActivity
 import com.flutlin.R
+import com.flutlin.apiConfig.WebApiClient
 import com.flutlin.apiConfig.response.UserResponse
 import com.google.gson.GsonBuilder
+import io.flutter.embedding.android.FlutterActivity
 import io.flutter.plugin.common.BasicMessageChannel
 import io.flutter.plugin.common.StringCodec
 import io.flutter.view.FlutterMain
@@ -17,9 +19,11 @@ import io.flutter.view.FlutterRunArguments
 import io.flutter.view.FlutterView
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import io.flutter.embedding.engine.FlutterEngine
+import io.flutter.plugins.GeneratedPluginRegistrant
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : FlutterActivity() {
   private var flutterView: FlutterView? = null
   private var messageChannel: BasicMessageChannel<String>? = null
   private val CHANNEL = "api"
@@ -48,7 +52,13 @@ class MainActivity : AppCompatActivity() {
 
 
   override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
+
+    FlutterMain.startInitialization(this); //Added line
+    super.onCreate(savedInstanceState);
+    val flutterEngine = FlutterEngine(applicationContext)
+    GeneratedPluginRegistrant.registerWith(flutterEngine);
+
+
 
     // handling arguments.
     val args = getArgsFromIntent(intent)
@@ -58,8 +68,6 @@ class MainActivity : AppCompatActivity() {
     setContentView(R.layout.flutter_view_layout)
 
     // hiding action bar
-    val supportActionBar = supportActionBar
-    supportActionBar?.hide()
 
     flutterView = findViewById(R.id.flutter_view)
 
@@ -70,7 +78,7 @@ class MainActivity : AppCompatActivity() {
     flutterView!!.runFromBundle(runArguments)
 
     // establishing message channel which can be used for the data passing from one platform to another.
-    messageChannel = BasicMessageChannel(flutterView, CHANNEL, StringCodec.INSTANCE)
+    messageChannel = BasicMessageChannel(flutterView!!,CHANNEL,StringCodec.INSTANCE)
 
     sendAndroidIncrement("")
 
